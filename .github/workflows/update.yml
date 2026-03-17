@@ -2,12 +2,16 @@ name: Daily Chart Update
 
 on:
   schedule:
-    - cron: '30 21 * * 1-5'  # Runs at 5 PM UTC on weekdays
-  workflow_dispatch:         # Allows manual clicking
+    - cron: '30 21 * * 1-5'
+  workflow_dispatch:
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+    
+    # FORCES GITHUB TO ALLOW BRANCH CREATION
+    permissions:
+      contents: write
     
     steps:
     - name: Checkout repository
